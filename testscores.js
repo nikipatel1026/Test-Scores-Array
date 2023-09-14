@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const scoreTableBody = document.querySelector("#scoreTable tbody");
     const averageSection = document.getElementById("averageSection");
     const averageValue = document.getElementById("averageValue");
+    const resetButton = document.getElementById("resetButton");
 
     // Initialize an array to store scores
     const scores = [];
@@ -55,4 +56,22 @@ document.addEventListener("DOMContentLoaded", function () {
             averageSection.style.display = "block";
         }
     }
+
+    // Handle reset button click event
+    resetButton.addEventListener("click", function () {
+        // Clear the scores array
+        scores.length = 0;
+
+        // Remove all rows from the table
+        while (scoreTableBody.firstChild) {
+            scoreTableBody.removeChild(scoreTableBody.firstChild);
+        }
+
+        // Reset the average section
+        averageValue.textContent = "";
+        averageSection.style.display = "none";
+
+        // Clear the input field
+        scoreInput.value = "";
+    });
 });
